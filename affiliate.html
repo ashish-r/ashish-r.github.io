@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Referral</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Paste Your Link</h2>
+  <p>The form below contains two input elements; one of type text and one of type password:</p>
+  
+    
+  
+  
+  
+  <div class="form-row">
+  <div class="form-group col-md-4">
+      <label for="service" class="col-form-label">Service</label>
+      <select id="service" class="form-control">
+	  <option value="">--Choose One--</option>
+	  <option value="flpkrt">Flipkart</option>
+	  <option value="amzn">Amazon</option>
+	  </select>
+    </div>
+    <div class="form-group col-md-8">
+      <label for="givenlink" class="col-form-label">Your Link</label>
+      <input type="text" class="form-control" id="givenlink">
+    </div>
+    
+    
+  </div>
+  <button type="gnrt" class="btn btn-primary" onClick="generate_link()">Generate</button>
+  </br>
+  </br>
+  </br>
+  <div class="form-group">
+    <label for="generated_link" class="col-form-label">Generated Link</label>
+    <p type="text"  id="generated_link"></p>
+  </div>
+  
+  
+
+  
+</div>
+
+</body>
+
+<script>
+function generate_link()
+{
+    var service_dropdown = document.getElementById("service");
+	var selected_service = service_dropdown.options[service_dropdown.selectedIndex].value;
+	var generated_url_input = document.getElementById("generated_link");
+	var generated_url = "";
+	if (!selected_service){
+		alert("Please Select Srvice");
+	}
+	
+	else{
+		var given_url = document.getElementById("givenlink").value.split("/");
+		console.log(given_url);
+		if (selected_service == "flpkrt"){
+			var pid_index = -1;
+			for (var i = 0; i < given_url.length; i++) {
+				if(given_url[i].toLowerCase().indexOf("pid") >= 0){
+					pid_index = i;
+				}
+    
+			}
+			console.log(pid_index);
+			if(pid_index > 2){
+				var sub_url_part = given_url[pid_index].split("&");
+				generated_url = "https://dl.flipkart.com/dl//" + given_url[pid_index - 2]+ "/p/" + sub_url_part[0] + "&affid=ashishr";
+				generated_url_input.innerHTML = generated_url;
+				
+			}
+			else{
+				generated_url_input.innerHTML = "Please provide correct url";
+			}
+		}
+	}
+}
+
+</script>
+
+
+
+</html>
