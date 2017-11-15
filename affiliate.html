@@ -76,19 +76,15 @@ function generate_link()
 			if(pid_index > 2){
 				var sub_url_part = given_url[pid_index].split("&");
 				generated_url = "https://dl.flipkart.com/dl//" + given_url[pid_index - 2]+ "/p/" + sub_url_part[0] + "&affid=ashishr";
-				generated_url_input.innerHTML = generated_url;
 				
-			}
-			else{
-				generated_url_input.innerHTML = "Please provide correct url";
 			}
 		}
 		else if (selected_service == "amzn"){
 			generated_url = document.getElementById("givenlink").value + "?&_encoding=UTF8&tag=offer072-21&linkCode=ur2&linkId=dc40444bb4445d25a5a4e91a890a5d3b&camp=3638&creative=24630";
-			generated_url_input.innerHTML = "<a href = " +  generated_url + ">" + generated_url + "</a>";
-			console.log(generated_url);
 		}
 	}
+	generated_url_input.innerHTML = "<a href = " +  generated_url + ">" + generated_url + "</a>";
+	console.log(generated_url);
 }
 	
 	
