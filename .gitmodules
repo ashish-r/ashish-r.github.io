@@ -1,0 +1,3 @@
+[submodule "resources/repos/whatsapp-any"]
+	path = resources/repos/whatsapp-any
+	url = git@github.com:ashish-r/whatsapp-any.git
